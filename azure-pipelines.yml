@@ -8,6 +8,9 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
+variables:
+  buildConfiguration: 'Release'
+
 steps:
 - task: UseDotNet@2
   displayName: 'Install .NET Core SDK'
@@ -15,7 +18,7 @@ steps:
     version: 6.x
     performMultiLevelLookup: true
     includePreviewVersions: true # Required for preview versions
-  task: DotNetCoreCLI@2
+- task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
     feedsToUse: 'select'
@@ -26,5 +29,3 @@ steps:
     command: 'build'
     arguments: '--configuration $(buildConfiguration)'
   displayName: 'dotnet build $(buildConfiguration)'
-variables:
-  buildConfiguration: 'Release'
