@@ -1,0 +1,13 @@
+@model AppMvc.Models.ProductModel
+@{
+    @* var product = ViewData["product"] as ProductModel; *@
+    var product = ViewBag.product as ProductModel;
+
+}
+<p>@ViewData["Title"]</p>
+<div>
+    <h1>@product.Name</h1>
+    <p>
+        Giá: @product.Price
+    </p>
+</div>
